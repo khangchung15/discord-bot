@@ -60,7 +60,7 @@ Before you begin, ensure you have the following installed:
 
 ## Configuration
 
-1. **Update FFmpeg Path**
+**Update FFmpeg Path**
    - Open `bot.py`
    - Find the `FFMPEG_PATH` variable
    - Update it to point to your FFmpeg executable:
@@ -71,7 +71,7 @@ Before you begin, ensure you have the following installed:
 
 ## Running the Bot
 
-1. **Local Development**
+**Local Development**
    Run `python bot.py` and `java -jar Lavalink.jar` on terminal
 
 ## Commands
