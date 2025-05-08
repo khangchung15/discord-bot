@@ -27,12 +27,21 @@ wheels/
 # Virtual Environment
 venv/
 ENV/
+env/
 
 # IDE specific files
 .idea/
 .vscode/
 *.swp
 *.swo
+.DS_Store
+
+# Logs
+*.log
+
+# Local development
+*.db
+*.sqlite3
 
 # Lavalink
 Lavalink.jar

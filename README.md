@@ -1,13 +1,12 @@
 # Discord Music Bot
 
-A Discord bot that can play music in voice channels using YouTube links or search queries.
+Discord bot that can play music in voice channels using YouTube links or search queries.
 
 ## Features
 
 - Play music from YouTube links or search queries
-- Basic music controls (play, pause, resume, stop)
+- Music controls (play, pause, resume, stop)
 - Simple command interface
-- Voice channel management
 
 ## Prerequisites
 
@@ -18,10 +17,9 @@ Before you begin, ensure you have the following installed:
 
 ## Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone <your-repository-url>
-   cd DiscordBot
+1. **Clone repo**
+   ```
+   git clone https://github.com/khangchung15/discord-bot.git
    ```
 
 2. **Install Python dependencies**
@@ -30,7 +28,7 @@ Before you begin, ensure you have the following installed:
    ```
 
 3. **Install FFmpeg**
-   - Download FFmpeg from [https://www.gyan.dev/ffmpeg/builds/](https://www.gyan.dev/ffmpeg/builds/)
+   - Download FFmpeg from https://www.gyan.dev/ffmpeg/builds/
    - Choose the "essentials" build
    - Extract the zip file
    - Add the `bin` folder to your system PATH
@@ -39,8 +37,9 @@ Before you begin, ensure you have the following installed:
      2. Under System Variables, find and select "Path"
      3. Click "Edit"
      4. Click "New"
-     5. Add the path to the `bin` folder (e.g., `C:\ffmpeg\bin`)
+     5. Add the path to the `bin` folder (e.g., `C:\ffmpeg\bin` or in `Downloads\ffmpeg\bin`)
      6. Click "OK" on all windows
+   - For Mac: Not sure, never used it before
 
 4. **Set up environment variables**
    - Create a `.env` file in the project root
@@ -48,6 +47,16 @@ Before you begin, ensure you have the following installed:
      ```
      DISCORD_TOKEN=your_bot_token_here
      ```
+   - To get bot token, go to: https://discord.com/developers/
+   - Sign up or Log in account
+   
+   - Invite Bot To Server:
+      1. New Application > Make a new bot
+      2. In OAuth2 tab on the left > under "OAuth2 URL Generator", check "bot" > scroll down more > check appropriate permission (I had Administrator for testing)
+      3. Under "Generated URL" copy & paste into new tab to invite the bot to server
+   - Get Discord Bot Token:
+    1. Go into Bot tab on the left > under "Token", click "Reset Token" > copy that new token and paste in `.env` file
+    
 
 ## Configuration
 
@@ -56,39 +65,14 @@ Before you begin, ensure you have the following installed:
    - Find the `FFMPEG_PATH` variable
    - Update it to point to your FFmpeg executable:
      ```python
-     FFMPEG_PATH = r"C:\path\to\your\ffmpeg.exe"
+     FFMPEG_PATH = r"C:\Users\username\Downloads\ffmpeg-7.1.1-essentials_build\ffmpeg-7.1.1-essentials_build\bin\ffmpeg.exe"
      ```
+   - Exact path will be different depends on the version of FFMPEG you downloaded
 
 ## Running the Bot
 
 1. **Local Development**
-   ```bash
-   python bot.py
-   ```
-
-2. **Deployment Options**
-   The bot can be deployed to various platforms:
-
-   ### Railway
-   1. Create an account on [Railway](https://railway.app/)
-   2. Create a new project
-   3. Connect your GitHub repository
-   4. Add environment variables (DISCORD_TOKEN)
-   5. Deploy
-
-   ### Render
-   1. Create an account on [Render](https://render.com/)
-   2. Create a new Web Service
-   3. Connect your GitHub repository
-   4. Add environment variables (DISCORD_TOKEN)
-   5. Deploy
-
-   ### Heroku
-   1. Create an account on [Heroku](https://heroku.com/)
-   2. Create a new app
-   3. Connect your GitHub repository
-   4. Add environment variables (DISCORD_TOKEN)
-   5. Deploy
+   Run `python bot.py` and `java -jar Lavalink.jar` on terminal
 
 ## Commands
 
@@ -99,27 +83,6 @@ Before you begin, ensure you have the following installed:
 - `!pause` - Pause the current song
 - `!resume` - Resume the paused song
 - `!stop` - Stop playing and clear the queue
-
-## Troubleshooting
-
-1. **FFmpeg not found**
-   - Ensure FFmpeg is installed correctly
-   - Verify the FFmpeg path in `bot.py`
-   - Check if FFmpeg is in your system PATH
-
-2. **Bot not joining voice channel**
-   - Ensure the bot has proper permissions
-   - Check if you're in a voice channel
-   - Verify the bot's voice permissions in Discord
-
-3. **Music not playing**
-   - Check your internet connection
-   - Verify FFmpeg installation
-   - Ensure the bot has proper permissions
-
-## Contributing
-
-Feel free to submit issues and enhancement requests!
 
 ## License
 
