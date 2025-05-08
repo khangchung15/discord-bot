@@ -3,6 +3,7 @@ from discord.ext import commands
 import wavelink
 import os
 from dotenv import load_dotenv
+import asyncio
 
 # Load environment variables
 load_dotenv()
@@ -12,19 +13,15 @@ intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 
-# Wavelink node configuration
-wavelink_nodes = [
-    wavelink.Node(
-        uri='http://localhost:2333',  # Lavalink server address
-        password='youshallnotpass'    # Lavalink server password
-    )
-]
-
 @bot.event
 async def on_ready():
     print(f'Bot is ready! Logged in as {bot.user}')
     # Initialize wavelink
-    await wavelink.NodePool.connect(client=bot, nodes=wavelink_nodes)
+    node = wavelink.Node(
+        uri='http://localhost:2333',  # Lavalink server address
+        password='youshallnotpass'    # Lavalink server password
+    )
+    await wavelink.NodePool.connect(client=bot, nodes=[node])
 
 @bot.command(name='join')
 async def join(ctx):
@@ -79,4 +76,5 @@ async def skip(ctx):
     await ctx.send("Skipped the current song")
 
 # Run the bot
-bot.run(os.getenv('DISCORD_TOKEN'))
+if __name__ == "__main__":
+    asyncio.run(bot.run(os.getenv('DISCORD_TOKEN')))
